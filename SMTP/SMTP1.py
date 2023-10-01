@@ -1,34 +1,34 @@
 import smtplib
+import schedule
+from sys import *
 import csv
+import time
 
-
-
-def Send(csvFile):
-
-    sender = "roshanpp20@gmail.com"
-    AppPass = "bsxr oiuv chnc osqp"
-
+def Send():
     s = smtplib.SMTP("smtp.gmail.com" , 587)
-
     s.starttls()
-                    #App Password
-    s.login(sender , AppPass)
 
-    message = "An Automated Message From Ragnar20-03"
+    s.login("roshanpp20@gmail.com" , "bsxr oiuv chnc osqp" )
 
-    for line in csvFile:
-        s.sendmail(sender , line[1] , message+"__")
+    with open("Demo.csv" ) as file :
+        csvFile = csv.reader(file)
 
+        headers = next(csvFile)
+        print(headers)
+
+        for line in csvFile :
+            s.sendmail("roshanpp20@gmail.com" , line[1] , "An Automated Email from RaGnar" )
+        
+        print("------------------ Mail Succesfully Send ------------------------")
 
 def main():
+    print("-----------------------Mail Sender with SMTP-----------------------")
+    schedule.every(int(argv[1])).seconds.do(Send)
 
-# Opening Respective CSV File  || With ih used to Execption Handling
-    with open ("Demo.csv"  , mode="r") as File:
-        
-        # Reading csv file
-        csvFile = csv.reader(File)
-
-        Send(csvFile)
-
-if __name__== "__main__" :
+if __name__=="__main__":
     main()
+
+
+while (1):
+    schedule.run_pending()
+    time.sleep(1)

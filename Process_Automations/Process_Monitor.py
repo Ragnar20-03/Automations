@@ -19,8 +19,8 @@ def is_connected():
 
 def MailSender(filename , time):
     try : 
-        fromaddr = "marvellousinfosystem@gmail.com"
-        toaddr = "piyushkhairnar@ymail.com"
+        fromaddr = "roshanpp20@gmail.com"
+        toaddr = "r0shanspatilffnis2003@gmail.com"
 
         msg = MIMEMultipart()
 
@@ -64,11 +64,12 @@ def MailSender(filename , time):
 
         s.starttls()
 
-        s.login(fromaddr , "----------")
+        s.login(fromaddr , "bsxr oiuv chnc osqp")
 
         text = msg.as_string()
 
         s.sendmail(fromaddr , toaddr , text)
+        print("Send Email")
 
         s.quit()
 
@@ -79,7 +80,7 @@ def MailSender(filename , time):
 
 def ProcessLog(log_dir = "Marvellous"):
     listprocess=[]
-
+    print("Here")
     if not os.path.exists(log_dir):
         try : 
             os.mkdir(log_dir)
@@ -87,7 +88,7 @@ def ProcessLog(log_dir = "Marvellous"):
             pass
 
     seperator = "-"*80
-    log_path = os.path.join(log_dir,"MarvellousLog%s.log"%(time.ctime()))
+    log_path = os.path.join(log_dir,"MarvellousLog%s.txt"%(time.ctime()))
     f = open(log_path , "w")
     f.write(seperator + "\n")
     f.write("Marvellous Infosystems Process Logger : " + time.ctime() + "\n")
@@ -102,22 +103,22 @@ def ProcessLog(log_dir = "Marvellous"):
         except (psutil.NoSuchProcess , psutil.AccessDenied , psutil.ZombieProcess) : 
             pass
 
-        for element in listprocess : 
-            f.write("%s\n" %element)
-        
-        print("Log File is succesfully generated at location %s "  %(log_path))
+    for element in listprocess : 
+        f.write("%s\n" %element)
+    
+    print("Log File is succesfully generated at location %s "  %(log_path))
 
-        connected = is_connected
+    connected = is_connected
 
-        if connected : 
-            startTime = time.time()
-            MailSender(log_path , time.ctime())
-            endTime = time.time()
+    if connected : 
+        startTime = time.time()
+        MailSender(log_path , time.ctime())
+        endTime = time.time()
 
-            print("Took %s Seconds to send email " %(endTime - startTime))
+        print("Took %s Seconds to send email " %(endTime - startTime))
 
-        else :
-            print("There is no internet connection")
+    else :
+        print("There is no internet connection")
     
 def main():
     print("----- Marvellous Infosystems by Roshan Patil -----")
@@ -136,12 +137,12 @@ def main():
         exit()
     
     try : 
-        schedule.every(int(argv[1])).minutes.do(ProcessLog)
+        schedule.every(int(argv[1])).seconds.do(ProcessLog)
         while True : 
             schedule.run_pending()
             time.sleep(1)
-    except  ValueError :
-        print("Error : Invalid datatype of input")
+    except  ValueError as V:
+        print("Error : Invalid datatype of input" , V)
 
     except Exception as E :
         print("Error : Invalid Input" , E)

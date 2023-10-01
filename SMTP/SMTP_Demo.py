@@ -1,5 +1,4 @@
 import smtplib
-import pandas
 
 # creates SMTP session
 s = smtplib.SMTP('smtp.gmail.com', 587)
