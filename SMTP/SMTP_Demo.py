@@ -8,13 +8,15 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls()
 
 # Authentication
+        #Username of sender         //App Password
 s.login("roshanpp20@gmail.com", "bsxr oiuv chnc osqp")
 
 # message to be sent
 message = "An Automated Message from Roshan Patil"
 
 # sending the mail
-s.sendmail("roshanpp20@gmail.com", "", message)
+            # sender                   # Email to send (Reciever)   Messge
+s.sendmail("roshanpp20@gmail.com", "shubhamBorse@gmail.com",       message)
 
 # terminating the session
 s.quit()
