@@ -12,9 +12,9 @@ from email.mime.multipart import MIMEMultipart
 
 def is_connected():
     try:
-        urllib2.request.urlopen('http://216.58.192.142',timeout = 1)
+        urllib2.urlopen('http://216.58.192.142',timeout = 1)
         return True
-    except urllib2.request.URLError as err:
+    except urllib2.URLError as err:
         return False
 
 def MailSender(filename,time):

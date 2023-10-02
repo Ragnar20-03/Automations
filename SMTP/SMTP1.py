@@ -19,10 +19,10 @@ def Send():
         for line in csvFile :
             s.sendmail("roshanpp20@gmail.com" , line[1] , "An Automated Email from RaGnar" )
         
-        print("------------------ Mail Succesfully Send ------------------------")
+        # print("------------------ Mail Succesfully Send ------------------------")
 
 def main():
-    print("-----------------------Mail Sender with SMTP-----------------------")
+    # print("-----------------------Mail Sender with SMTP-----------------------")
     schedule.every(int(argv[1])).seconds.do(Send)
 
 if __name__=="__main__":
