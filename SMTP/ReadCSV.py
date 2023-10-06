@@ -7,11 +7,11 @@ def main():
 
       # reading the CSV file 
       csvFile = csv.reader(file )
-       
+      headers = next(csvFile)
 
       # displaying the contents of the CSV file 
       for lines in csvFile: 
-            print(lines[1]) 
+            print(lines) 
 
 
 if __name__=="__main__":

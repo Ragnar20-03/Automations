@@ -15,7 +15,7 @@ message = "An Automated Message from Roshan Patil"
 
 # sending the mail
             # sender                   # Email to send (Reciever)   Messge
-s.sendmail("roshanpp20@gmail.com", "shubhamBorse@gmail.com",       message)
+s.sendmail("roshanpp20@gmail.com", "r0shanspatilffnis2003@gmail.com",       message)
 
 # terminating the session
 s.quit()
