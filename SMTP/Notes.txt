@@ -1,0 +1,17 @@
+Data Set -> 
+1 - Indepantant variable (Compulsory) 
+2 - Dependant Variable  -> on categaory of dependant variable we decide algorith 
+                            if Dependant variable is catagorical type we Prefer classification algorithm
+
+    if both values then it is label data (SuperWised)
+    other wise it is unlabled (unsupervised )
+
+
+* Hyper Parameter
+        -> Which change taste of bhaji 
+
+
+KNN (K Nearest Neighbours) -> Powerful Algorithm is Powerful when data set is less.
+        It doesnt do anything in Training Phase .
+        It Does Every thing in Predict Method. 
+
