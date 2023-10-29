@@ -190,8 +190,15 @@ def main():
             print("No Duplicates Found :: \n\n")
             exit()
         printSize(iSize , iCount)
+        flag =  input(("\n\n Remove Files ? ( y or n )"))
+        if flag == 'y' :
+            removeDuplicates(dict1)
 
         endTime = time.time()
+
+        flag =  input(("Remove empty Directories ? (y / n )"))
+        if flag == 'y' :
+            removeEmptyDirs(argv[1])
 
         endTime = time.time()
 
