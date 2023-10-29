@@ -5,6 +5,16 @@ import os
 from sys import * 
 import hashlib
 
+# ////////////////////////////////////////////
+#   
+#   Function Name : removeDuplicates 
+#   Usage  :   remove duplicate files by skipping original Files 
+#   input  :   Dictionary which contain {key : [hashcode] , value : [path_of_a_file]}
+#   output :   Delete Duplicate Files Completely
+#   Author : Roshan Prashant  Patil 
+#   Date : 29 Oct 2023
+#
+# ////////////////////////////////////////////
 
 def removeDuplicates(dict1):
     duplicates = list(filter(lambda x : len(x) > 1 , dict1.values()))
@@ -14,11 +24,16 @@ def removeDuplicates(dict1):
         for result in duplicates:
             for subresult in result :
                 iCnt = iCnt + 1 
+
+                # For Skipping 1 iteration i.e . Skipping original File : 
                 if iCnt > 1 :
                     print("Removing :: " , subresult)
+                    os.remove(subresult)
             iCnt = 0 
     else :
         print("No Duplicates Found :")
+
+# ////////////////////////////////////////////
 
 # ////////////////////////////////////////////
 #   
@@ -26,8 +41,9 @@ def removeDuplicates(dict1):
 #   Usage : to hash file in hesadecimal number to uniquely identify the file
 #   input : path of file , blocksize to read file 
 #   output : return hexadecimal number of file
-#   Author : Roshan Patil 
+#   Author : Roshan Prashant Patil 
 #   Date : 29 Oct 2023
+#
 # ////////////////////////////////////////////
 
 def hashfile(path , blocksize = 4096):
@@ -43,13 +59,16 @@ def hashfile(path , blocksize = 4096):
     return hasher.hexdigest()
 
 # ////////////////////////////////////////////
+
+# ////////////////////////////////////////////
 #   
 #   Function Name : treavelDirectory 
 #   Usage : To travel firectory , sub directory in it to hash file 
 #   input : abs path of file 
 #   output : return list of hashdecimal value of files
-#   Author : Roshan Patil 
+#   Author : Roshan Prashant Patil 
 #   Date : 29 Oct 2023
+# 
 # ////////////////////////////////////////////
 
 def travelDirectory(path):
@@ -68,23 +87,40 @@ def travelDirectory(path):
                     dups[file_hash] = [path]
     
     return dups
+# ////////////////////////////////////////////
 
 
-def printResults (dict1):
+# ////////////////////////////////////////////
+#   
+#   Function Name : printDuplicate 
+#   Usage : to hash file in hesadecimal number to uniquely identify the file
+#   input : path of file , blocksize to read file 
+#   output : return hexadecimal number of file
+#   Author : Roshan Patil 
+#   Date : 29 Oct 2023
+# 
+# ////////////////////////////////////////////
+
+def printDuplicate (dict1):
     dulplicateList = list(filter(lambda x : len(x) > 1 , dict1.values()))
     if(len(dulplicateList) > 0):
         print("Duplcaite File Are  ")
         for result in dulplicateList:
             for subresult in result : 
                 print(subresult)
-# Stater Function
 
+# ////////////////////////////////////////////
+
+
+# Starter Function
 
 def main():
     print("*"*10)
     dict1 = travelDirectory(argv[1])
-    printResults(dict1)
+    printDuplicate(dict1)
+    print("\n")
     removeDuplicates(dict1)
 
+# Stater Function call:
 if __name__ == "__main__":
     main()
