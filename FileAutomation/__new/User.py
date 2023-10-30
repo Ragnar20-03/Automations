@@ -153,13 +153,11 @@ def printSize(iSize , iCount):
 
 def removeEmptyDirs(path):
     for dirName , subdirs , fileList in os.walk(path):
-        print(dirName , " -----")
         for subdir in subdirs:
             path = os.path.join(dirName , subdir)
             lenX = os.listdir(path)
-            print("Length is  : " , lenX)
             if (len(lenX) == 0 ):
-                print("path is : " ,path)
+                print("Removing Directory :: " , path)
                 os.rmdir(path)
 
 # Starter Function
